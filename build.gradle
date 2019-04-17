@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.4.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.solace.samples'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+
+
+dependencies {
+
+	// https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+	compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.10.2'
+
+	compile("com.solacesystems:sol-jms:10.2.1")
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
